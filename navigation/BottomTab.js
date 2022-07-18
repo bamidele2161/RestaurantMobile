@@ -4,6 +4,7 @@ import { HomeIcon, ShoppingCartIcon, UserIcon } from 'react-native-heroicons/out
 import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import FoodScreen from '../screens/FoodScreen';
 
 const Tab = createBottomTabNavigator()
 
@@ -14,8 +15,8 @@ export const BottomTabNavigator = () => {
         tabBarShowLabel: false,
         }}  
     >
-
-    {/* <Tab.Screen name="Food" component={FoodScreen}
+{/* 
+    <Tab.Screen name="Food" component={FoodScreen}
         options={{
         tabBarIcon: ({color, size}) => (
             <UserIcon color="#00CCBB" size={30}/>
@@ -24,7 +25,7 @@ export const BottomTabNavigator = () => {
     /> */}
 
     <Tab.Screen 
-        name="Home" 
+        name="Dashboard" 
         component={HomeScreen} 
         options={{
         headerShown: false,

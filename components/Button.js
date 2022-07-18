@@ -4,7 +4,7 @@ import React from 'react'
 const Button = ({title, onPress}) => {
   return (
     <View className="mt-6">
-        <TouchableOpacity className="bg-[#00CCBB] w-full p-4 rounded" onPress={onPress}>
+        <TouchableOpacity className="bg-[#00CCBB] w-full p-4 rounded-lg" onPress={onPress}>
             <Text className="text-white text-center font-bold text-lg">{title}</Text>
         </TouchableOpacity>
     </View>

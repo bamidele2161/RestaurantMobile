@@ -18,7 +18,7 @@ const ProfileScreen = ({navigation}) => {
         </View>
 
         <TouchableOpacity 
-            onPress={() => navigation.replace("Home")}
+            onPress={() => navigation.navigate("Home")}
             className="absolute top-14 left-4 bg-[#00CCBB] rounded p-2">
             <ArrowLeftIcon color="white" size={25}/>
         </TouchableOpacity>

@@ -57,12 +57,12 @@ const FoodScreen = () => {
         }
     }
   return (
-    <View className="bg-white" key={id}>
+    <View className="bg-white" key={id} style={{flex: 1,}}>
         <View className="relative">
             <Image source={imgUrl} className="w-full h-56 bg-gray-300 p-4"/>
         </View>
         <TouchableOpacity 
-            onPress={() => navigation.replace("Home")}
+            onPress={() => navigation.navigate("Home")}
             className="absolute top-14 left-4 bg-[#00CCBB] rounded p-2">
             <ArrowLeftIcon color="white" size={20}/>
         </TouchableOpacity>

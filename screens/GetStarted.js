@@ -11,6 +11,7 @@ const GetStarted = ({navigation}) => {
         </View>
         <View className="w-full mt-20 ">
 
+        <Text className="text-gray-800 text-center p-2 rounded font-bold text-lg">Ready to get started</Text>
             <Button title="Sign Up" onPress={() => navigation.replace("Register")}/>
             <Button title="Login" onPress={() => navigation.replace("Login")}/>
         </View>
