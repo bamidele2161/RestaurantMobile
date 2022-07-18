@@ -3,8 +3,6 @@ import React, { useLayoutEffect, useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Items } from '../database';
 import { useNavigation } from '@react-navigation/native';
-// import { ScrollView } from 'react-native-web';
-// import CartDetails from '../components/CartDetails';
 import { ArrowLeftIcon, MinusIcon, PlusIcon, TrashIcon } from 'react-native-heroicons/solid';
 import Button from '../components/Button';
 import Toast from 'react-native-root-toast';
@@ -75,7 +73,7 @@ const CartScreen = () => {
 
     const cartDetails = (data) => {
         return (
-         <View key={data.key}>
+         <View key={data.id}>
             
             <TouchableOpacity
             className="flex-row justify-between items-center mb-2 space-x-2"

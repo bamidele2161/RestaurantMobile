@@ -62,7 +62,7 @@ const FoodScreen = () => {
             <Image source={imgUrl} className="w-full h-56 bg-gray-300 p-4"/>
         </View>
         <TouchableOpacity 
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.replace("Home")}
             className="absolute top-14 left-4 bg-[#00CCBB] rounded p-2">
             <ArrowLeftIcon color="white" size={20}/>
         </TouchableOpacity>

@@ -61,7 +61,7 @@ const HomeScreen = () => {
                 <ChevronDownIcon size={20} className="icon-arrow-down" color="#00CCBB" />
             </Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("Cart")} >
+        <TouchableOpacity onPress={() => navigation.replace("Profile")} >
           <UserIcon color="#00CCBB" size={35}/>
         </TouchableOpacity>
       </View>
