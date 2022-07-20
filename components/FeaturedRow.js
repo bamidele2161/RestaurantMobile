@@ -39,28 +39,11 @@ const FeaturedRow = ({id, title, description}) => {
     // }
 
 
-  useEffect(() => {
-    // sanityClient.fetch(`
-    //   *[_type == "featured" && _id == $id]{
-    //     ...,
-    //     restaurants[]->{
-    //     ...,
-    //     dishes[]->,
-    //     type-> {
-    //       name
-    //     }
-    //     },
-    //   }[0]
-    // `, {id}).then((data) =>{
-    //   setDishes(data?.restaurants)
-    // })
-  }, [])
-
   return (
-    <View>
+    <View >
       {
         category.map((item) => (
-          <View key={item.id}>
+          <View key={item.id} className=" mb-2">
             <View className="mt-4 flex-row items-center justify-between px-4">
               <Text className="font-bold tx-lg">{item.category}</Text>
               <ArrowRightIcon color="#00CCBB" />

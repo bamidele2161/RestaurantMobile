@@ -13,6 +13,8 @@ export const BottomTabNavigator = () => {
     <Tab.Navigator 
         screenOptions={{
         tabBarShowLabel: false,
+        tabBarActiveTintColor: '#00CCBB',
+        tabBarInactiveTintColor: 'gray',
         }}  
     >
 {/* 
@@ -30,13 +32,14 @@ export const BottomTabNavigator = () => {
         options={{
         headerShown: false,
         tabBarIcon: ({color, size}) => (
-            <HomeIcon color="#00CCBB" size={30}/>
+            <HomeIcon color={color} size={30}/>
         )
     }}/>
     <Tab.Screen name="Cart" component={CartScreen}
         options={{
+
         tabBarIcon: ({color, size}) => (
-            <ShoppingCartIcon color="#00CCBB" size={30}/>
+            <ShoppingCartIcon color={color} size={30}/>
         )
     }}
     />

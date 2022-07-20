@@ -53,7 +53,16 @@ const RestaurantCard = ({
 
   return (
     <TouchableOpacity 
-      className="bg-white mr-3 shadow-sm">
+    onPress={() => navigation.navigate("Food", {
+      id,
+      title,
+      price,
+      imgUrl,
+      rating,
+      genre,
+      description,
+    })}
+      className="bg-white mr-3 shadow-sm rounded-md">
         <Image source={imgUrl} 
         className="h-36 w-64 rounded-sm"
         />
@@ -70,10 +79,10 @@ const RestaurantCard = ({
         </View>
         <View className="items-center flex-row space-x-1">
             <LocationMarkerIcon color="gray" size={20} opacity={0.4}/>
-            <Text className="text-xs text-gray-500">Nearby . {description}</Text>
-            <View className=" rounded p-1 items-end justify-items-end" style={{alignItems: 'flex-end', justifyContent: 'flex-end', width: 100}} >
+            <Text className="text-xs text-gray-500">North Gate, Futa</Text>
+            {/* <View className=" rounded p-1 items-end justify-items-end" style={{alignItems: 'flex-end', justifyContent: 'flex-end', width: 100}} >
               <Text className="text-white bg-[#00CCBB] p-2 rounded" onPress={() => addToCart(id)}>Order</Text>
-            </View>
+            </View> */}
         </View>
       </View>
     </TouchableOpacity>

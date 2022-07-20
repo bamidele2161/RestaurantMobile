@@ -68,7 +68,7 @@ const HomeScreen = () => {
 
       {/*search*/}
       <View className="flex-row items-center space-x-2 mx-4 pb-2">
-        <View className="flex-row flex-1 space-x-2 bg-gray-200 p-3">
+        <View className="flex-row flex-1 space-x-2 bg-gray-200 p-3 rounded-md">
             <SearchIcon color="gray" size={20} />
             <TextInput 
                 placeholder='Restaurants and Chops'
@@ -79,7 +79,7 @@ const HomeScreen = () => {
       </View>
 
       {/*body */}
-      <ScrollView>
+      <ScrollView >
         {/* category */}
             <Categories  />
         {/* features */}

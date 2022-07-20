@@ -5,7 +5,7 @@ export const Items = [
         ProductName: 'protein powder',
         productionPrice: 1200,
         rating: 4,
-        genre: 'Nigerian',
+        genre: 'Nigerian Food',
         description: 'Protein-rich foods',
         image: require('./assets/protein.jpeg'),
     },
@@ -15,8 +15,8 @@ export const Items = [
         ProductName: 'Green Pea',
         productionPrice: 2300,
         rating: 4,
-        genre: 'Nigerian',
-        description: 'for fried rice',
+        genre: 'Nigerian Food',
+        description: 'A diet rich in vegetables and fruits can lower blood pressure, reduce the risk of heart disease and stroke, prevent some types of cancer, lower risk of eye and digestive problems, and have a positive effect upon blood sugar, which can help keep appetite in check.',
         image: require('./assets/f2.jpeg'),
     },
     {
@@ -67,7 +67,7 @@ export const Items = [
         rating: 4,
         genre: 'Nigerian',
         description: 'Up to 20 ass |',
-        image: require('./assets/protein.jpeg'),
+        image: require('./assets/pro.jpg'),
     },
     {
         id: 8,
@@ -76,7 +76,7 @@ export const Items = [
         productionPrice: 700,
         rating: 4,
         genre: 'Nigerian',
-        description: 'Fried Rice Ingredients',
+        description: 'A diet rich in vegetables and fruits can lower blood pressure, reduce the risk of heart disease and stroke, prevent some types of cancer, lower risk of eye and digestive problems, and have a positive effect upon blood sugar, which can help keep appetite in check.',
         image: require('./assets/f3.jpeg'),
     },
     {
@@ -87,7 +87,7 @@ export const Items = [
         rating: 4,
         genre: 'Nigerian',
         description: 'Delicious Beef',
-        image: require('./assets/fat.jpeg'),
+        image: require('./assets/fa.jpg'),
     },
     {
         id: 10,
@@ -127,13 +127,13 @@ export const category = [
         id: 1,
         category: 'Vegetables',
         image: require('./assets/f2.jpeg'),
-        catDesc: 'vegetables'
+        catDesc: 'Delicious Vegetables'
     },
     {
         id: 2,
         category: 'Proteins',
         image: require('./assets/protein.jpeg'),
-        catDesc: 'Protein'
+        catDesc: 'Protein Gain'
     },    {
         id: 3,
         category: 'Fat',
@@ -150,12 +150,33 @@ export const category = [
         id: 5,
         category: 'Pasteries',
         image: require('./assets/pastries.jpeg'),
-        catDesc: 'Pasteries'
+        catDesc: 'Yummy Pasteries'
     },
     {
         id: 6,
         category: 'Fruits',
         image: require('./assets/f1.jpeg'),
-        catDesc: 'Fruits'
+        catDesc: 'Look Fresh with Fruits'
     },  
+]
+
+export const board = [
+    {
+        id: 1,
+        image: require('./assets/5ea4588bb033640004a14ad2.png'),
+        title: "Live-Check",
+        description: "Allow users to check the availability of food"
+    },
+    {
+        id: 2,
+        image: require('./assets/5bbf074adbc29e02dd827848.png'),
+        title: "Online Menu",
+        description: "Allow users to check the real-time menus in our restaurant"
+    },
+    {
+        id: 3,
+        image: require('./assets/59bedb387a216d0b052f128d.png'),
+        title: "Easy Delivery",
+        description: "Order the food you want and it will be delivered to you"
+    },
 ]

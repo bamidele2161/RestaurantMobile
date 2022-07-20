@@ -29,12 +29,12 @@ const FoodScreen = () => {
         let itemArray = await AsyncStorage.getItem("cartItems");
         itemArray = JSON.parse(itemArray)
         if (itemArray) {
-            let array = itemArray
+            let array = itemArray //if the array is not empty
             array.push(id)
 
             try {
                 await AsyncStorage.setItem("cartItems", JSON.stringify(array));
-                Toast.show("item added successfully", {
+                Toast.show("Item added successfully", {
                     duration: 3000,
                 })
                 navigation.navigate("Home")
@@ -42,12 +42,12 @@ const FoodScreen = () => {
                 return error;
             }
         } else {
-            let array = [];
+            let array = []; //if the array is empty
             array.push(id);
 
             try {
                 await AsyncStorage.setItem("cartItems", JSON.stringify(array));
-                Toast.show("item added successfully", {
+                Toast.show("Item added successfully", {
                     duration: 3000,
                 })
                 navigation.navigate("Home");
@@ -78,10 +78,15 @@ const FoodScreen = () => {
                     <Text className="text-green-500">{rating}</Text> . {genre}
                 </Text>
             </View>
+            <View className="items-center flex-row space-x-1 my-4">
+                <Text className="text-xs text-gray-500">{description}</Text>
+            </View>
             <View className="items-center flex-row space-x-1">
                 <LocationMarkerIcon color="gray" size={20} opacity={0.4}/>
-                <Text className="text-xs text-gray-500">Nearby . {description}</Text>
+                <Text className="text-xlg text-gray-500"> @TeeFood, FUTA, Akure.</Text>
             </View>
+            
+
             
             <Button onPress={() => addToCart(id)} title="Add to Cart"/>
       </View>

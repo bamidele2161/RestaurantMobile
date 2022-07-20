@@ -6,19 +6,21 @@ const WelcomeScreen = ({navigation}) => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate("Started")
+      navigation.navigate("OnBoarding")
     }, 3000)
   }, [navigation])
 
   return (
-    <View className="bg-[#00CCBB] flex-1 text-center justify-center items-center">
+    <View className="bg-[#00CCBB] flex-1 text-center justify-center items-center" >
         <LottieView 
           autoPlay 
           loop
           source={require('../assets/s.json')} 
           className="mb-6 justify-center"
         />
-      <Text className="text-3xl font-bold text-white" style={{marginTop: 200}}>OrderFood</Text>
+      <View className=" justify-center items-center" style={{marginTop: 250}}>
+      <Image source={require('../assets/white.png')} />
+      </View>
     </View>
   )
 }

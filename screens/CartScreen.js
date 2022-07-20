@@ -43,7 +43,10 @@ const CartScreen = () => {
     const checkOut = async () => {
         try {
             await AsyncStorage.removeItem("cartItems");
-            Toast.show("You  will be redirected to payment page")
+            Toast.show("Your food will be delivered SOON!", {
+                duration: 3000,
+            })
+            navigation.navigate("Home");
         } catch (error) {
             return error;
         }

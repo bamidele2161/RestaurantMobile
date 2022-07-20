@@ -1,6 +1,6 @@
 import { TouchableOpacity, View, Text, Image } from 'react-native'
 import React from 'react'
-import { LocationMarkerIcon, MailIcon, PhoneIcon, UserIcon, ArrowLeftIcon } from 'react-native-heroicons/outline'
+import { LocationMarkerIcon, MailIcon, PhoneIcon, UserIcon, ArrowLeftIcon, LogoutIcon } from 'react-native-heroicons/outline'
 import Button from '../components/Button'
 
 const ProfileScreen = ({navigation}) => {
@@ -11,7 +11,7 @@ const ProfileScreen = ({navigation}) => {
         <View className="justify-center items-center mt-10">
 
             <View className="rounded-full w-20 h-20 my-6" style={{width: 100, height: 100, resizeMode: 'contain'}}>
-              <Image source={require("../assets/f1.jpeg")} style={{ height: 100, resizeMode: 'cover', width: 100, borderRadius: 75, overflow: "hidden"}} className=" rounded-full w-full "/>
+              <Image source={require("../assets/user.jpg")} style={{ height: 100, resizeMode: 'cover', width: 100, borderRadius: 75, overflow: "hidden"}} className=" rounded-full w-full "/>
             </View>
             <Text  className="font-bold text-2xl text-white mb-6">Akinyemi Bamidele</Text>
 
@@ -28,24 +28,25 @@ const ProfileScreen = ({navigation}) => {
       <View className=" px-4 py-6" style={{ flex: 0.7, marginTop: 30}}>
         <View className=" flex-row space-x-7 border-gray-300" style={{ marginBottom: 30, borderBottomWidth: 1,}}>
           <UserIcon color="#00CCBB" size={25}/>
-          <Text  className="font-semibold text-gray-500 text-lg mb-6">Akinyemi Bamidele</Text>
+          <Text  className=" text-gray-500 text-base mb-5">Akinyemi Bamidele</Text>
         </View>
         <View className=" flex-row space-x-7 border-gray-300" style={{ marginBottom: 30, borderBottomWidth: 1,}}>
           <PhoneIcon color="#00CCBB" size={25}/>
-          <Text  className="font-semibold text-gray-500 text-lg mb-6">07060797442</Text>
+          <Text  className=" text-gray-500 text-base mb-5">07060797442</Text>
         </View>
         <View className=" flex-row space-x-7 border-gray-300" style={{ marginBottom: 30, borderBottomWidth: 1,}}>
           <MailIcon color="#00CCBB" size={25}/>
-          <Text  className="font-semibold text-gray-500 text-lg mb-6">akinyemibamidele2@gmail.com</Text>
+          <Text  className="text-gray-500 text-base mb-5">akinyemibamidele2@gmail.com</Text>
         </View>
         <View className=" flex-row space-x-7 border-gray-300" style={{ marginBottom: 30, borderBottomWidth: 1,}}>
           <LocationMarkerIcon color="#00CCBB" size={25}/>
-          <Text  className="font-semibold text-gray-500 text-lg mb-6">Wesco Estate, FUTA North Gate, Akure.</Text>
+          <Text  className=" text-gray-500 text-base mb-5">Wesco Estate, FUTA North Gate, Akure.</Text>
         </View>
         <View className=" flex-row space-x-7 border-gray-300" style={{ marginBottom: 30, borderBottomWidth: 1,}}>
-          <UserIcon color="#00CCBB" size={25}/>
-          <Text  className="font-semibold text-gray-500 text-lg mb-6">Akinyemi Bamidele</Text>
+          <LogoutIcon color="#00CCBB" size={25}/>
+          <Text onPress={() => navigation.navigate("Login")} className=" text-gray-500 text-base mb-5">Logout</Text>
         </View>
+
         
         <View className="justify-center items-center">
           <Button title="Edit Profile" />
