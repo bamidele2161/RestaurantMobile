@@ -2,9 +2,8 @@ import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { ArrowLeftIcon, StarIcon, LocationMarkerIcon } from 'react-native-heroicons/solid'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import Toast from 'react-native-root-toast'
 import Button from '../components/Button'
+import { addToCart } from '../utils/helpers'
 
 const FoodScreen = () => {
     const navigation = useNavigation()
@@ -25,37 +24,7 @@ const FoodScreen = () => {
         }
     } = useRoute();
 
-    const addToCart = async id => {
-        let itemArray = await AsyncStorage.getItem("cartItems");
-        itemArray = JSON.parse(itemArray)
-        if (itemArray) {
-            let array = itemArray //if the array is not empty
-            array.push(id)
 
-            try {
-                await AsyncStorage.setItem("cartItems", JSON.stringify(array));
-                Toast.show("Item added successfully", {
-                    duration: 3000,
-                })
-                navigation.navigate("Home")
-            } catch (error) {
-                return error;
-            }
-        } else {
-            let array = []; //if the array is empty
-            array.push(id);
-
-            try {
-                await AsyncStorage.setItem("cartItems", JSON.stringify(array));
-                Toast.show("Item added successfully", {
-                    duration: 3000,
-                })
-                navigation.navigate("Home");
-            } catch (error) {
-                return error;
-            }
-        }
-    }
   return (
     <View className="bg-white" key={id} style={{flex: 1,}}>
         <View className="relative">

@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, FlatList, useWindowDimensions, Animated } from 'react-native'
 import React, { useRef, useState } from 'react'
 import BoardItem from './BoardItem'
-import { board } from '../../database'
+import { board } from '../../utils/database'
 import Paginator from './Paginator'
 
 const OnBoarding = ({navigation}) => {

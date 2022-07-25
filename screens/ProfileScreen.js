@@ -1,11 +1,11 @@
-import { TouchableOpacity, View, Text, Image } from 'react-native'
+import { TouchableOpacity, View, Text, Image, ScrollView } from 'react-native'
 import React from 'react'
 import { LocationMarkerIcon, MailIcon, PhoneIcon, UserIcon, ArrowLeftIcon, LogoutIcon } from 'react-native-heroicons/outline'
 import Button from '../components/Button'
 
 const ProfileScreen = ({navigation}) => {
   return (
-    <View style={{flex: 1,}} className="">
+    <ScrollView style={{flex: 1,}} className="">
       <View className="bg-[#00CCBB] p-4 rounded-b-3xl" style={{flex: 0.3, paddingTop: 50}}>
 
         <View className="justify-center items-center mt-10">
@@ -54,7 +54,7 @@ const ProfileScreen = ({navigation}) => {
       </View>
 
 
-    </View>
+    </ScrollView>
   )
 }
 

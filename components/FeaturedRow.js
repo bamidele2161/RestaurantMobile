@@ -3,7 +3,7 @@ import React, { useEffect, useState, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { ArrowRightIcon } from 'react-native-heroicons/outline'
 import RestaurantCard from './RestaurantCard'
-import { category, Items } from '../database'
+import { category, Items } from '../utils/database'
 
 const FeaturedRow = ({id, title, description}) => {
   const [dishes, setDishes] = useState([])
@@ -14,31 +14,6 @@ const FeaturedRow = ({id, title, description}) => {
           headerShown: false,
       })
   }, [])
-
-    //   useEffect(() => {  
-    //     const unsubscribe = navigation.addListener('focus', () => {
-    //         getDataFromDB();
-    //     })
-    //     return unsubscribe;
-    // }, [navigation]);
-
-    // const getDataFromDB = () => {
-    //     let proteinList = [];
-    //     let vegetableList = [];
-
-    //     for (let index = 0; index < Items.length; index++) {
-    //         if(Items[index].category === "product") {
-    //             proteinList.push(Items[index]);
-    //         }
-    //         else if (Items[index].category === "vegetables") {
-    //             vegetableList.push(Items[index]);
-    //         }
-    //     }
-    //     setProtein(proteinList);
-    //     setVegetables(vegetableList);
-    // }
-
-
   return (
     <View >
       {

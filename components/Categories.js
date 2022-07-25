@@ -1,17 +1,10 @@
 import { ScrollView, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { category } from '../database'
+import { category } from '../utils/database'
 // import sanityClient, { urlFor } from '../sanity/sanity'
 
 const Categories = () => {
 
-  useEffect(() => {
-    // sanityClient.fetch(`
-    //   *[_type == "category"]
-    // `).then(data => {
-    //   setCategoriesData(data);
-    // })
-  })
   return (
     <ScrollView
     horizontal

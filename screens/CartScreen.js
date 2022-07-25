@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useLayoutEffect, useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Items } from '../database';
+import { Items } from '../utils/database';
 import { useNavigation } from '@react-navigation/native';
 import { ArrowLeftIcon, MinusIcon, PlusIcon, TrashIcon } from 'react-native-heroicons/solid';
 import Button from '../components/Button';
@@ -9,6 +9,8 @@ import Toast from 'react-native-root-toast';
 
 const CartScreen = () => {
     const [product, setProduct] = useState();
+    const [productCount, setProductCount] = useState(1);
+    const [isTotal, setIsTotal] = useState(null);
     const navigation = useNavigation();
 
     useLayoutEffect(() => {
@@ -24,19 +26,22 @@ const CartScreen = () => {
     }, [navigation])
 
     const getDataFromDB = async () => {
-        let items = await AsyncStorage.getItem("cartItems");
-        items = JSON.parse(items);
-        let productData = [];
+        let items = await AsyncStorage.getItem("cartItems"); //get the items list from the async-storage as string
+        items = JSON.parse(items); // convert to opjects
+        let productData = []; // initialize an empty array
         if (items) {
-            Items.forEach(data => {
-                if(items.includes(data.id)) {
-                    productData.push(data);
-                    return;
+            Items.forEach(data => { // loop through the object
+                if(items.includes(data.id)) { //if the objedct includes the data Id                  
+                    productData.push(data); //push the data inside the empty array
+                    return; 
                 }
             });
             setProduct(productData);
-        } else {
+            getTotal(productData)
+
+        } else { 
             setProduct(false);
+            getTotal(false);
         }
     }
 
@@ -51,25 +56,63 @@ const CartScreen = () => {
             return error;
         }
     }
-    const add = () => {
+    const add = async(id) => {
+        let itemArray = await AsyncStorage.getItem("cartItems");
+        itemArray = JSON.parse(itemArray)
+        let array = itemArray
 
+        Items.forEach(item => {
+            if(item.id == id) {
+                if(array.includes(id)){
+                    item.quantity += 1
+                    setProductCount(productCount + 1)
+                }
+            } 
+
+        })
     }
 
-    const minus = () => {
+    const minus = async(id) => {
+        let itemArray = await AsyncStorage.getItem("cartItems");
+        itemArray = JSON.parse(itemArray)
+        let array = itemArray
 
+        Items.forEach(item => {
+            if(item.id == id) {
+                if(array.includes(id)){
+                    item.quantity -= 1
+                    setProductCount(productCount - 1)
+                    if((item.quantity <= 1) || (productCount <= 1)){ 
+                        item.quantity = 1
+                        setProductCount(productCount)
+                    }
+                }
+            } 
+
+        })
+    }
+    
+
+    const getTotal = (productData) => { 
+        let total = 0;
+        for (let i = 0; i < productData.length; i++) {
+            let productPrice = productData[i].productPrice
+            total = total + productPrice
+        }
+        setIsTotal(total);
     }
 
     const removeItem = async(id) => {
-        let itemArray = await AsyncStorage.getItem("cartItems");
-        itemArray = JSON.parse(itemArray);
+        let itemArray = await AsyncStorage.getItem("cartItems"); //getting the item from async storage as a string 
+        itemArray = JSON.parse(itemArray); ;// converting the string to javascript object
         if(itemArray) {
             let array = itemArray;
-            for(let index = 0; index < array.length; index++) {
-                if(array[index] == id) {
-                    array.slice(index, 1);
+            for(let index = 0; index < array.length; index++) { //loop throught the object
+                if(array[index] == id) { 
+                    array.splice(index, 1); //.splice removes the item with the id from the arary of object  //.splice(index of, deleteCount)
                 }
-                await AsyncStorage.setItem("cartItems", JSON.stringify(array));
-                getDataFromDB();
+                await AsyncStorage.setItem("cartItems", JSON.stringify(array)); //the new array of objects 
+                getDataFromDB();  //call this function to display the cart Items
             }
         }  
       }
@@ -86,17 +129,17 @@ const CartScreen = () => {
 
                 <View className="flex-col">
                     <Text className="font-bold text-gray-700">{data.ProductName}</Text>
-                    <Text className="text-xs text-gray-500 mt-1 mb-3">#{data.productionPrice}</Text>
+                    <Text className="text-xs text-gray-500 mt-1 mb-3">#{data.productionPrice * data.quantity}</Text>
                     <View className="flex-row items-center space-x-3">
                         <TouchableOpacity 
-                            onPress={() => add()}
+                            onPress={() => add(data.id)}
                             className=" border border-gray-400 rounded-full p-1"
                         >
                             <PlusIcon color="gray" size={15}/>
                         </TouchableOpacity>
-                        <Text>1</Text>
+                        <Text>{data.quantity}</Text>
                         <TouchableOpacity 
-                            onPress={() => minus()}
+                            onPress={() => minus(data.id)}
                             className=" border border-gray-400 rounded-full p-1"
                         >
                             <MinusIcon color="gray" size={15}/>
@@ -105,7 +148,7 @@ const CartScreen = () => {
                 </View>
             </View>
                 <TouchableOpacity 
-                    onPress={() => removeItem(id)}
+                    onPress={() => removeItem(data.id)}
                     className=" relative top-6 border border-gray-400 rounded-full p-1">
                     <TrashIcon color="gray" size={15}/>
                 </TouchableOpacity>
@@ -137,15 +180,15 @@ const CartScreen = () => {
                         <Text className="font-bold my-5">Order Info</Text>
                         <View className="justify-between flex-row mb-3">
                             <Text className="text-gray-500 text-xs">Subtotal</Text>
-                            <Text className="text- text-gray-800">#4000</Text>
+                            <Text className="text- text-gray-800">{isTotal}</Text>
                         </View>
                         <View className="justify-between flex-row mb-6">
                             <Text className="text-gray-500 text-xs">Shopping Cost</Text>
-                            <Text className="text-sm text-gray-800">+#1500</Text>
+                            <Text className="text-sm text-gray-800">+#{isTotal/20}</Text>
                         </View>
                         <View className="justify-between flex-row mb-3">
                             <Text className="text-gray-500 text-xs">Total</Text>
-                            <Text className="font-bold text-lg">#Subtotal</Text>
+                            <Text className="font-bold text-lg">#{isTotal + isTotal/20}</Text>
                         </View>
                     </View>
                     <Button title="Checkout" onPress={checkOut}/>

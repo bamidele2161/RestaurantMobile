@@ -2,7 +2,7 @@ import { View, Text, Image, SafeAreaView, TextInput, ScrollView, TouchableOpacit
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { AdjustmentsIcon, ChevronDownIcon, SearchIcon, ShoppingCartIcon, UserIcon} from "react-native-heroicons/outline";
-import { category, Items } from '../database';
+import { category, Items } from '../utils/database';
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 // import FeaturedRow from '../components/FeaturedRow';
@@ -10,8 +10,6 @@ import FeaturedRow from '../components/FeaturedRow';
 
 
 const HomeScreen = () => {
-    const [products, setProducts] = useState([]);
-    const [vegetables, setVegetables] = useState([]);
 
     const navigation = useNavigation();
 
@@ -20,30 +18,6 @@ const HomeScreen = () => {
             headerShown: false,
         })
     }, [])
-
-    // useEffect(() => {  
-    //     const unsubscribe = navigation.addListener('focus', () => {
-    //         getDataFromDB();
-    //     })
-    //     return unsubscribe;
-    // }, [navigation]);
-
-    // const getDataFromDB = () => {
-    //     let productList = [];
-    //     let vegetableList = [];
-
-    //     for (let index = 0; index < Items.length; index++) {
-    //         if(Items[index].category === "product") {
-    //             productList.push(Items[index]);
-    //         }
-    //         else if (Items[index].category === "vegetables") {
-    //             vegetableList.push(Items[index]);
-    //         }
-    //     }
-    //     setProducts(productList);
-    //     setVegetables(vegetableList);
-    // }
-
 
   return (
     <SafeAreaView className="bg-white pt-5">
